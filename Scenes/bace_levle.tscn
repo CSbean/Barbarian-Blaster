@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c50el35njdfn1"]
+[gd_scene load_steps=10 format=3 uid="uid://c50el35njdfn1"]
 
 [ext_resource type="MeshLibrary" uid="uid://cxjl880r3wbnp" path="res://assets/MeshLibaries/SpaceLibrary.tres" id="1_7i2ny"]
 [ext_resource type="PackedScene" uid="uid://2aw35j7gw48o" path="res://Scenes/enemy/enemy.tscn" id="2_0tbjv"]
+[ext_resource type="PackedScene" uid="uid://72be5bf6ywu1" path="res://Base/base.tscn" id="3_01hrb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xd7d"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,7 +22,7 @@ albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_7i2ny"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -27.447376, 0, 10.248699, -1.5743561, 0, 1.5338306, 1.5743561, 0, -1.5338306, 13.6282425, 0, 9.898097, 1.1277885, 0, 1.2045841, -1.1277885, 0, -1.2045841, 13.809021, 0, 1.5864086, 0.8061142, 0, 1.2542213, -0.8061142, 0, -1.2542213, -2.2159348, 0, 1.536044, 1.4260979, 0, 1.3043396, -1.4260979, 0, -1.3043396, -2.2159348, 0, -2.1760383, 1.3721066, 0, 0.7516459, -1.3721066, 0, -0.7516459, -17.968973, 0, -2.5432894, 0, 0, 0, 0, 0, 0, -18.633997, 0, -8.032764),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -27.447376, 0, 10.248699, -1.5743561, 0, 1.5338306, 1.5743561, 0, -1.5338306, 13.6282425, 0, 9.898097, 1.1277885, 0, 1.2045841, -1.1277885, 0, -1.2045841, 13.809021, 0, 1.5864086, 0.8061142, 0, 1.2542213, -0.8061142, 0, -1.2542213, -2.2159348, 0, 1.536044, 1.4260979, 0, 1.3043396, -1.4260979, 0, -1.3043396, -2.2159348, 0, -2.1760383, 1.3721066, 0, 0.7516459, -1.3721066, 0, -0.7516459, -17.968973, 0, -2.5432894, 0, 0, 0, -1.3721066, 0, -0.7516459, -18.633997, 0, -8.032764),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -44,7 +45,7 @@ size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_0tbjv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 0, 14.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -2.5, 14.5, 9.5)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_7i2ny")
@@ -104,4 +105,7 @@ path_joined = false
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("2_0tbjv")]
 transform = Transform3D(-0.029940452, 0, -0.99954325, 0, 1, 0, 0.99954325, 0, -0.029940452, -27.447376, 0, 10.248699)
-loop = true
+speed = 20
+
+[node name="Base" parent="." instance=ExtResource("3_01hrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.633997, 0, -8.032764)
