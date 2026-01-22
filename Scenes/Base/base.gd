@@ -23,5 +23,4 @@ func _ready() -> void:
 	health = max_health
 
 func take_damage()->void:
-	print("damage taken by base")
 	health -=1
