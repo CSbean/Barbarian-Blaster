@@ -124,7 +124,7 @@ progress = 10.0
 speed = 20
 
 [node name="Enemy4" parent="Path3D" instance=ExtResource("2_0tbjv")]
-transform = Transform3D(-0.015835235, 0, -0.9998653, 0, 1, 0, 0.9998653, 0, -0.015835235, -12.451227, 0, 10.5831995)
+transform = Transform3D(-0.015835233, 0, -0.99986523, 0, 1, 0, 0.99986523, 0, -0.015835233, -12.451227, 0, 10.5831995)
 progress = 15.0
 speed = 20
 

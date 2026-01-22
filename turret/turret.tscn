@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://beav77qq7grt7"]
+[gd_scene load_steps=6 format=3 uid="uid://beav77qq7grt7"]
+
+[ext_resource type="Script" uid="uid://dv044nddoy3oa" path="res://turret/turret.gd" id="1_vfthy"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pweg5"]
 height = 1.0
@@ -17,6 +19,7 @@ bottom_radius = 0.2
 height = 1.0
 
 [node name="turret" type="Node3D"]
+script = ExtResource("1_vfthy")
 
 [node name="turretBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -41,3 +44,8 @@ mesh = SubResource("CylinderMesh_2876l")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="turretBase/turretTop"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3431186, 0, 0.7832428)
 mesh = SubResource("CylinderMesh_2876l")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
