@@ -21,7 +21,6 @@ height = 1.0
 [sub_resource type="Animation" id="Animation_vfthy"]
 resource_name = "fire"
 length = 0.3
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -9,7 +9,7 @@ var target : Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(_delta: float) -> void:
-	target = enemy_path.get_children().back()
+	target = find_best_target()
 	if target != null:
 		look_at(target.global_position, Vector3.UP, true)
 
