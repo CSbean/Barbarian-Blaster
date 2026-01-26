@@ -6,11 +6,14 @@ class_name Enemy
 @export var max_health := 50
 var health :int:
 	set(nh):
+		if health > nh:
+			animation_player.play("takeDamage")
 		health = nh
 		if health < 1:
 			queue_free()
 @onready var  base :Base = get_tree().get_first_node_in_group("Base")
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

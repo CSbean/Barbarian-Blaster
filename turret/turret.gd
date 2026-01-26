@@ -6,6 +6,7 @@ extends Node3D
 var enemy_path :Path3D
 var projectile = preload("res://turret/projectile.tscn")
 var target : Node3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(_delta: float) -> void:
 	target = enemy_path.get_children().back()
@@ -18,6 +19,7 @@ func _on_timer_timeout() -> void:
 		add_child(new_proj)
 		new_proj.global_position = global_position
 		new_proj.direction = global_transform.basis.z
+		animation_player.play("fire")
 
 func find_best_target()-> Enemy:
 	var best = null
