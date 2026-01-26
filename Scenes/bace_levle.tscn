@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c50el35njdfn1"]
+[gd_scene load_steps=16 format=3 uid="uid://c50el35njdfn1"]
 
 [ext_resource type="MeshLibrary" uid="uid://cxjl880r3wbnp" path="res://assets/MeshLibaries/SpaceLibrary.tres" id="1_7i2ny"]
 [ext_resource type="PackedScene" uid="uid://bt367vcdh0q88" path="res://Scenes/RayPickerCamra/ray_picker_camra.tscn" id="1_tusin"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b2ptm1omja2bs" path="res://Scenes/path_3d.gd" id="3_p66qp"]
 [ext_resource type="Script" uid="uid://bmc7omjkxin8f" path="res://Scenes/turret_manager.gd" id="5_jcaxl"]
 [ext_resource type="PackedScene" uid="uid://beav77qq7grt7" path="res://turret/turret.tscn" id="6_p66qp"]
+[ext_resource type="Script" uid="uid://dase8sk4ycol2" path="res://Scenes/bank.gd" id="8_h6spu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xd7d"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +34,12 @@ point_count = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i2ny"]
 albedo_color = Color(0.49134398, 0.19890466, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p66qp"]
+font_size = 60
+font_color = Color(0.75893545, 0.7075018, 1.1551381e-06, 1)
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="baceLevle" type="Node3D"]
 
@@ -124,5 +131,22 @@ max_health = 6
 script = ExtResource("5_jcaxl")
 turret = ExtResource("6_p66qp")
 enemy_path = NodePath("../EnemyPath")
+
+[node name="bank" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+script = ExtResource("8_h6spu")
+
+[node name="Label" type="Label" parent="bank"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Gold: 150"
+label_settings = SubResource("LabelSettings_p66qp")
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
