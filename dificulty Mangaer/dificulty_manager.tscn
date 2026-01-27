@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b51qqhu056e6n"]
+
+[ext_resource type="Script" uid="uid://b474b373dq0j1" path="res://dificulty Mangaer/dificulty_manager.gd" id="1_iy8uq"]
+
+[sub_resource type="Curve" id="Curve_iy8uq"]
+_limits = [0.25, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -1.7500001, 0, 1, Vector2(1, 0.25), -1.7500001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vv2ad"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="dificultyManager" type="Node"]
+script = ExtResource("1_iy8uq")
+spawn_time_curve = SubResource("Curve_iy8uq")
+enemy_health_curve = SubResource("Curve_vv2ad")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true

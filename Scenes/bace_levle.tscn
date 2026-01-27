@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c50el35njdfn1"]
+[gd_scene load_steps=17 format=3 uid="uid://c50el35njdfn1"]
 
 [ext_resource type="MeshLibrary" uid="uid://cxjl880r3wbnp" path="res://assets/MeshLibaries/SpaceLibrary.tres" id="1_7i2ny"]
 [ext_resource type="PackedScene" uid="uid://bt367vcdh0q88" path="res://Scenes/RayPickerCamra/ray_picker_camra.tscn" id="1_tusin"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bmc7omjkxin8f" path="res://Scenes/turret_manager.gd" id="5_jcaxl"]
 [ext_resource type="PackedScene" uid="uid://beav77qq7grt7" path="res://turret/turret.tscn" id="6_p66qp"]
 [ext_resource type="Script" uid="uid://dase8sk4ycol2" path="res://Scenes/bank.gd" id="8_h6spu"]
+[ext_resource type="PackedScene" uid="uid://b51qqhu056e6n" path="res://dificulty Mangaer/dificulty_manager.tscn" id="9_2jwu1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xd7d"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -70,10 +71,11 @@ data = {
 "cells": PackedInt32Array(65535, 65534, 0, 65535, 1, 0, 65530, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 65530, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65530, 0, 0, 65530, 1, 0, 65531, 0, 0, 65531, 1, 0, 65532, 0, 0, 65532, 1, 0, 65533, 0, 0, 65533, 1, 0, 65534, 0, 0, 65534, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 65530, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0)
 }
 
-[node name="EnemyPath" type="Path3D" parent="."]
+[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("dificulty_manager")]
 curve = SubResource("Curve3D_7i2ny")
 script = ExtResource("3_p66qp")
 enemy_scene = ExtResource("2_0tbjv")
+dificulty_manager = NodePath("../dificultyManager")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath"]
 material_override = SubResource("StandardMaterial3D_7i2ny")
@@ -149,5 +151,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Gold: 150"
 label_settings = SubResource("LabelSettings_p66qp")
+
+[node name="dificultyManager" parent="." instance=ExtResource("9_2jwu1")]
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
