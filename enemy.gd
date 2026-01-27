@@ -4,12 +4,15 @@ class_name Enemy
 ## The speed in m/s the enemy will move
 @export var speed := 10
 @export var max_health := 50
+@export var enemy_gold_drop := 50
+@onready var bank = get_tree().get_first_node_in_group("bank")
 var health :int:
 	set(nh):
 		if health > nh:
 			animation_player.play("takeDamage")
 		health = nh
 		if health < 1:
+			bank.gold += enemy_gold_drop
 			queue_free()
 @onready var  base :Base = get_tree().get_first_node_in_group("Base")
 
