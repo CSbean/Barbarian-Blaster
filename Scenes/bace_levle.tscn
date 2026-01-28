@@ -71,11 +71,12 @@ data = {
 "cells": PackedInt32Array(65535, 65534, 0, 65535, 1, 0, 65530, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 65530, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65530, 0, 0, 65530, 1, 0, 65531, 0, 0, 65531, 1, 0, 65532, 0, 0, 65532, 1, 0, 65533, 0, 0, 65533, 1, 0, 65534, 0, 0, 65534, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 65530, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0)
 }
 
-[node name="EnemyPath" type="Path3D" parent="." unique_id=1657530067 node_paths=PackedStringArray("dificulty_manager")]
+[node name="EnemyPath" type="Path3D" parent="." unique_id=1657530067 node_paths=PackedStringArray("dificulty_manager", "victory_layer")]
 curve = SubResource("Curve3D_7i2ny")
 script = ExtResource("3_p66qp")
 enemy_scene = ExtResource("2_0tbjv")
 dificulty_manager = NodePath("../dificultyManager")
+victory_layer = NodePath("../VictoryLayer")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath" unique_id=1044249838]
 material_override = SubResource("StandardMaterial3D_7i2ny")
@@ -154,4 +155,16 @@ label_settings = SubResource("LabelSettings_p66qp")
 
 [node name="dificultyManager" parent="." unique_id=1967470043 instance=ExtResource("9_2jwu1")]
 
+[node name="VictoryLayer" type="CanvasLayer" parent="." unique_id=2085503200]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="VictoryLayer" unique_id=1737056292]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
+[connection signal="stop_spawning_enemies" from="dificultyManager" to="EnemyPath" method="_on_dificulty_manager_stop_spawning_enemies"]

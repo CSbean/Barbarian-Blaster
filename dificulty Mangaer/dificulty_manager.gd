@@ -5,9 +5,10 @@ extends Node
 @export var game_length := 30.0
 @export var enemy_health_curve: Curve
 
+signal stop_spawning_enemies
 func _ready() -> void:
 	timer.start(game_length)
-
+	Engine.time_scale = 3
 
 func _process(_delta: float) -> void:
 	pass
@@ -21,3 +22,7 @@ func get_spawn_time()->float:
 #need to retuen a float
 func get_enemy_health()->float:
 	return enemy_health_curve.sample(game_progress_ratio())
+
+
+func _on_timer_timeout() -> void:
+	emit_signal("stop_spawning_enemies")
