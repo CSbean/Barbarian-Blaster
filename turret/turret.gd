@@ -7,18 +7,20 @@ var enemy_path :Path3D
 var projectile = preload("res://turret/projectile.tscn")
 var target : Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var turret_base: Node3D = $turretBase
+@onready var cannon: Node3D = $turretBase/turretTop/Cannon
 
 func _physics_process(_delta: float) -> void:
 	target = find_best_target()
 	if target != null:
-		look_at(target.global_position, Vector3.UP, true)
+		turret_base.look_at(target.global_position, Vector3.UP, true)
 
 func _on_timer_timeout() -> void:
 	if target!=null:
 		var new_proj = projectile.instantiate()
 		add_child(new_proj)
-		new_proj.global_position = global_position
-		new_proj.direction = global_transform.basis.z
+		new_proj.global_position = cannon.global_position
+		new_proj.direction = cannon.global_transform.basis.z
 		animation_player.play("fire")
 
 func find_best_target()-> Enemy:
