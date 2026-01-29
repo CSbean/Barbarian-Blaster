@@ -2,8 +2,8 @@ extends CanvasLayer
 
 
 func _on_retry_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().reload_current_scene()
 
 
 func _on_quit_button_pressed() -> void:
-	pass
+	get_tree().quit()
