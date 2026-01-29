@@ -72,11 +72,12 @@ data = {
 "cells": PackedInt32Array(65535, 65534, 0, 65535, 1, 0, 65530, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 65530, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65530, 0, 0, 65530, 1, 0, 65531, 0, 0, 65531, 1, 0, 65532, 0, 0, 65532, 1, 0, 65533, 0, 0, 65533, 1, 0, 65534, 0, 0, 65534, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 65530, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0)
 }
 
-[node name="EnemyPath" type="Path3D" parent="." unique_id=1657530067 node_paths=PackedStringArray("dificulty_manager")]
+[node name="EnemyPath" type="Path3D" parent="." unique_id=1657530067 node_paths=PackedStringArray("dificulty_manager", "victory_layer")]
 curve = SubResource("Curve3D_7i2ny")
 script = ExtResource("3_p66qp")
-enemy_scene = ExtResource("2_0tbjv")
 dificulty_manager = NodePath("../dificultyManager")
+enemy_scene = ExtResource("2_0tbjv")
+victory_layer = NodePath("../VictoryLayer")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath" unique_id=1044249838]
 material_override = SubResource("StandardMaterial3D_7i2ny")
